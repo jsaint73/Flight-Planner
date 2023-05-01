@@ -86,4 +86,7 @@ random_button.pack()
 # Start the main event loop
 root.mainloop()
 
-## Added a GUi
+# Add a total to the prices of indirect flight
+#add a Find MAx for flights
+# display the resulting indirect flights that reach the destination
+#order the results by cheapest first
