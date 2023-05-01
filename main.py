@@ -64,13 +64,21 @@ search_button.pack()
 
 # Create a button to generate random flights
 def generate_random_flights():
-    cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
-    city1 = random.choice(cities)
-    city2 = random.choice(cities)
+   # Read from URL
+    file = urlopen("https://data.transportation.gov/resource/4f3n-jbg2.json?year=2022")
+    Read = file.read()
+    
+    # Parse JSON
+    flights = json.loads(Read)
+    
+    # Select a random flight
+    random_flight = random.choice(flights)
+    
+    # Set the cities in the entry widgets
     city1_entry.delete(0, tk.END)
-    city1_entry.insert(0, city1)
+    city1_entry.insert(0, random_flight["city1"])
     city2_entry.delete(0, tk.END)
-    city2_entry.insert(0, city2)
+    city2_entry.insert(0, random_flight["city2"])
 
 random_button = tk.Button(root, text="Random Flights", command=generate_random_flights)
 random_button.pack()
