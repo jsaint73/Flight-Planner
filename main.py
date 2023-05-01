@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from urllib.request import urlopen
 import json
+import random
 
 # Create the main window
 root = tk.Tk()
@@ -60,6 +61,19 @@ def search_flights():
 # Create the Search button
 search_button = tk.Button(root, text="Search", command=search_flights)
 search_button.pack()
+
+# Create a button to generate random flights
+def generate_random_flights():
+    cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
+    city1 = random.choice(cities)
+    city2 = random.choice(cities)
+    city1_entry.delete(0, tk.END)
+    city1_entry.insert(0, city1)
+    city2_entry.delete(0, tk.END)
+    city2_entry.insert(0, city2)
+
+random_button = tk.Button(root, text="Random Flights", command=generate_random_flights)
+random_button.pack()
 
 # Start the main event loop
 root.mainloop()
