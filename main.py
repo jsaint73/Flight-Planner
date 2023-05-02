@@ -48,24 +48,12 @@ def search_flights():
             if float(a) == min_fare:
                 low_cost_flight = d
                 print(f"The Cheapest flights from {low_cost_flight} and costs ${min_fare}")
-    
-        # Find maximum fare
-        MaxFares = sorted(ConnectingFlights.items(), key=lambda x: x[1], reverse=True)
-        print(f"The Most Expensive flights from {MaxFares[0][0]} and costs ${MaxFares[0][1]}")
-        
-    else:
-        print("No flights found.")
+  
       # Cheapest flight first
     if ConnectingFlights:
       min_fare = min(ConnectingFlights.values())
       for d,a in sorted(ConnectingFlights.items(), key=lambda x: x[1]):
             print(f"The Cheapest flights from {d} and costs ${a}")
-      max_fare =  max(MaxFares.values())
-      for d,a in MaxFares.values():
-        if float(a) == max_fare:
-          print(f"The most expensive flights from {d} and costs ${a}")
-    else:
-        print("No flights found.")
     if ConnectingFlights:
         print("Indirect flights:")
         for flight, cost in ConnectingFlights.items():
@@ -117,6 +105,3 @@ random_button.pack()
 # Start the main event loop
 root.mainloop()
 
-# Add a total to the prices of indirect flight
-#add a Find MAx for flights
-#order the results by cheapest first
