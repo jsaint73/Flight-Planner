@@ -42,12 +42,20 @@ def search_flights():
                 G.add_edge(flight1["city1"],flight1["city2"])
                 G.add_edge(flight2["city1"],flight2["city2"])
                 ConnectingFlights[flight2["city1"]] = flight2["fare"]
+      # Cheapest flight first
+    if ConnectingFlights:
+        sorted_flights = sorted(ConnectingFlights.items(), key=lambda x: x[1])
+        for d,a in sorted_flights:
+            print(f"The Cheapest flights from {d} and costs ${a}")
+    else:
+        print("No flights found.")
     if ConnectingFlights:
         print("Indirect flights:")
         for flight, cost in ConnectingFlights.items():
             print(flight + " costs $" + str(cost))
     else:
         print("No indirect flights found.")
+  ## display the resulting indirect flights that reach the destination
     if ConnectingFlights:
         min_fare = min(ConnectingFlights.values())
         for d,a in ConnectingFlights.items():
