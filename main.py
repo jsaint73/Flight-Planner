@@ -42,11 +42,28 @@ def search_flights():
                 G.add_edge(flight1["city1"],flight1["city2"])
                 G.add_edge(flight2["city1"],flight2["city2"])
                 ConnectingFlights[flight2["city1"]] = flight2["fare"]
+    if ConnectingFlights:
+        min_fare = min(ConnectingFlights.values())
+        for d,a in ConnectingFlights.items():
+            if float(a) == min_fare:
+                low_cost_flight = d
+                print(f"The Cheapest flights from {low_cost_flight} and costs ${min_fare}")
+    
+        # Find maximum fare
+        MaxFares = sorted(ConnectingFlights.items(), key=lambda x: x[1], reverse=True)
+        print(f"The Most Expensive flights from {MaxFares[0][0]} and costs ${MaxFares[0][1]}")
+        
+    else:
+        print("No flights found.")
       # Cheapest flight first
     if ConnectingFlights:
-        sorted_flights = sorted(ConnectingFlights.items(), key=lambda x: x[1])
-        for d,a in sorted_flights:
+      min_fare = min(ConnectingFlights.values())
+      for d,a in sorted(ConnectingFlights.items(), key=lambda x: x[1]):
             print(f"The Cheapest flights from {d} and costs ${a}")
+      max_fare =  max(MaxFares.values())
+      for d,a in MaxFares.values():
+        if float(a) == max_fare:
+          print(f"The most expensive flights from {d} and costs ${a}")
     else:
         print("No flights found.")
     if ConnectingFlights:
