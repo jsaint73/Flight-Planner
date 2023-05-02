@@ -35,6 +35,7 @@ def search_flights():
             G.add_edge(flight["city1"],flight["city2"], weight = flight["fare"])
     
     # Find minimum fare
+  #Big O of this is O(N^2)
     ConnectingFlights = {}
     for flight1 in flights:
         for flight2 in flights:
@@ -50,6 +51,7 @@ def search_flights():
                 print(f"The Cheapest flights from {low_cost_flight} and costs ${min_fare}")
   
       # Cheapest flight first
+  #Big O of this is O(n)
     if ConnectingFlights:
       min_fare = min(ConnectingFlights.values())
       for d,a in sorted(ConnectingFlights.items(), key=lambda x: x[1]):
