@@ -6,7 +6,7 @@ import json
 import random
 
 # Create the main window
-root = tk.Tk() 
+root = tk.Tk()  
 root.title("Flight Search")
 
 # Create the labels and entry widgets for City1 and City2
